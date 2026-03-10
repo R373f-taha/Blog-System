@@ -1,0 +1,165 @@
+<!--
+ * CoreUI - Open Source Bootstrap Admin Template
+ * @version v1.0.0-alpha.2
+ * @link http://coreui.io
+ * Copyright (c) 2016 creativeLabs Łukasz Holeczek
+ * @license MIT
+ -->
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+
+<head>
+    <meta charset="utf-8">
+
+    <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
+    <title>Dashboard</title>
+    <!-- Icons -->
+    <link href="{{asset('dashboard/css/font-awesome.min.css')}} " rel="stylesheet">
+    <link href="{{asset('dashboard/css/simple-line-icons.css')}} " rel="stylesheet">
+    <!-- Main styles for this application -->
+    <link href="{{asset('dashboard/dest/style.css')}} " rel="stylesheet">
+</head>
+
+<body class="navbar-fixed sidebar-nav fixed-nav">
+    <header class="navbar">
+        <div class="container-fluid">
+            <button class="navbar-toggler mobile-toggler hidden-lg-up" type="button">&#9776;</button>
+            <a class="navbar-brand" href="#"></a>
+            <ul class="nav navbar-nav hidden-md-down">
+                <li class="nav-item">
+                    <a class="nav-link navbar-toggler layout-toggler" href="#">&#9776;</a>
+                </li>
+
+            </ul>
+            <ul class="nav navbar-nav pull-left hidden-md-down">
+
+
+                <li class="nav-item">
+                    <a class="nav-link navbar-toggler aside-toggle" href="#">&#9776;</a>
+                </li>
+
+            </ul>
+        </div>
+    </header>
+    <div class="sidebar">
+        <nav class="sidebar-nav">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="icon-speedometer"></i> نظام المدونات</a>
+                </li>
+                <li class="nav-title">
+                  أهلاً و سهلاً
+                </li>
+                 <li class="nav-item">
+                    @role('admin')
+                    <a class="nav-link" href="{{ route('categories.create') }}"><i class="fa fa-list-alt"></i>إضافة فئة</a>
+                    @endrole
+                    <a class="nav-link" href="{{ route('blogs.showAll') }}"><i class="fa fa-book"></i>المدونات</a>
+                    <a class="nav-link" href="#"><i class="icon-user-following"></i> دسترسی کاربران</a>
+                </li>
+
+
+
+            </ul>
+        </nav>
+    </div>
+    <!-- Main content -->
+    <main class="main">
+ @if(session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    @endif
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="fa fa-align-justify"></i> قائمةالفئات
+                    </div>
+                    <div class="card-block">
+
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead class="thead-default">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>الاسم</th>
+                                        <th>تاريخ الإضافة</th>
+                                        <th>الإجراءات</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($categories as $category)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->created_at }}</td>
+                                        <td>
+                                          <a href="{{ route('categories.show', $category) }}" class="btn btn-sm btn-primary" title="عرض">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                             @role('admin')
+                                             <a href="{{ route('categories.edit', $category) }}" class="btn btn-sm btn-warning" title="تعديل">
+                                                <i class="fa fa-edit"></i>
+                                            </a>
+
+
+                                             <form action="{{ route('categories.delete', $category) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger" title="حذف" onclick="return confirm('هل أنت متأكد من الحذف؟')">
+                                                    <i class="fa fa-trash"></i>
+                                                </button>
+                                            </form>
+                                        @endrole
+                                        </td>
+                                    </tr>
+                                    @empty
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted">
+                                            لا توجد مدونات مضافة حتى الآن.
+                                        </td>
+                                    </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div> <!-- نهاية table-responsive -->
+                    </div> <!-- نهاية card-block -->
+                </div> <!-- نهاية card -->
+            </div> <!-- نهاية col-md-12 -->
+        </div> <!-- نهاية row -->
+    </div> <!-- نهاية container-fluid -->
+
+    </main>
+
+
+
+
+    <!-- Bootstrap and necessary plugins -->
+    <script src="js/libs/jquery.min.js"></script>
+    <script src="js/libs/tether.min.js"></script>
+    <script src="js/libs/bootstrap.min.js"></script>
+    <script src="js/libs/pace.min.js"></script>
+
+    <!-- Plugins and scripts required by all views -->
+    <script src="{{asset('dashboars/js/libs/Chart.min.js')}} "></script>
+
+    <!-- CoreUI main scripts -->
+
+    <script src="{{asset('dashboars/js/app.js')}} "></script>
+
+    <!-- Plugins and scripts required by this views -->
+    <!-- Custom scripts required by this view -->
+    <script src="{{asset('dashboars/js/views/main.js')}} "></script>
+
+    <!-- Grunt watch plugin -->
+    <script src="//localhost:35729/livereload.js"></script>
+</body>
+
+</html>
