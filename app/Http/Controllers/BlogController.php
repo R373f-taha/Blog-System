@@ -125,8 +125,11 @@ class BlogController extends Controller
 
     }
     public function categories($blog_id){
+
     $blog=Blog::findOrFail($blog_id);
+
     $categories=Blog::with('categories')->get();
+
     return view('Blog.index',compact('categories'));
 
     }
@@ -135,34 +138,34 @@ class BlogController extends Controller
 
         $blog=Blog::findOrFail($blog_id);
 
-
         if(Auth()->user()->favoriteBlogs()->where('blog_id',$blog_id))
 
             return redirect()->back()->with('error', 'المدونة موجودة بالفعل في المفضلة');
 
-         Auth()->user()->favoriteBlogs->syncWithoutDetatching($blog_id);
+         Auth()->user()->favoriteBlogs->detach($blog_id);
 
         return redirect()->route('blogs.showAll')->with('success',' تمت إضافة المدونةإلى المفضلة');
 
     }
      public function removeFromFav($blog_id){
 
+     $blog=Blog::findOrFail($blog_id);
+
       if(!Auth()->user()->favoriteBlogs()->where('blog_id',$blog_id))
 
             return redirect()->back()->with('error', 'المدونة ليست موجودة  في المفضلة');
 
-       Auth()->user()->favoriteBlogs()->
-        return redirect()->route('blogs.showAll')->with('success',' تمت إضافة الإزالة من المفضلة');
+       Auth()->user()->favoriteBlogs()->syncWithDetatchong($blog_id);
+
+        return redirect()->route('blogs.showAll')->with('success',' تمت إزالة من المفضلة');
 
     }
 
-     public function favoritesBlog($user_id){
+     public function favoritesBlog(){
 
-        $user=User::findOrFail($user_id);
+       $favBlogs= Auth()->user()->favoriteBlogs()->get();
 
-        $user->favoriteBlogs()->get();
-
-        return redirect()->route('blogs.showAll')->with('success',' تمت إضافة الإزالة من المفضلة');
+        return view('Blog.favorite',compact('favBlogs'));
 
     }
 }
