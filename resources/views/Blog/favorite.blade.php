@@ -38,7 +38,7 @@
                   أهلاً و سهلاً
                 </li>
                  <li class="nav-item">
-                   <a class="nav-link" href="{{ route('blogs.showAll') }}"><i class="fa fa-list-alt"></i> المدونات</a>
+                   <a class="nav-link" href="{{ route('blogs.showAll') }}"><i class="fa fa-book"></i> المدونات</a>
                     <a class="nav-link" href="{{ route('categories.showAll') }}"><i class="fa fa-list-alt"></i> الفئات</a>
                    <a class="nav-link">
                     <form action="{{ route('logout') }}" method="post" style="display: inline;">
@@ -89,7 +89,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($blogs as $blog)
+                                    @forelse($favBlogs as $blog)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $blog->title }}</td>
@@ -118,20 +118,7 @@
                                         <td>
 
 
-                                           <form action="{{ route('blogs.softDelete', $blog) }}" method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-secondary" title="أرشفة" onclick="return confirm('هل أنت متأكد من الأرشفة؟')">
-                                                    <i class="fa fa-archive"></i>
-                                                </button>
-                                            </form>
-                                             <form action="{{ route('blogs.forceDelete', $blog->id) }}" method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger" title="حذف" onclick="return confirm('هل أنت متأكد من الحذف؟')">
-                                                    <i class="fa fa-trash"></i>
-                                                </button>
-                                            </form>
+
 
 
 

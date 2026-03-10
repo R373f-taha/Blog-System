@@ -44,14 +44,16 @@
                      <a class="nav-link" href="{{ route('blogs.Trashed') }}"><i class="fa fa-tags"></i> المدونات المؤرشفة</a>
                    @endrole
                     <a class="nav-link" href="{{ route('categories.showAll') }}"><i class="fa fa-list-alt"></i> الفئات</a>
-                   <a class="nav-link">
+
+                    <a class="nav-link" href="{{ route('blogs.favorite_blogs') }}"><i class="fa fa-heart"></i> المدونات المفضلة</a>
+
+                     <a class="nav-link">
                     <form action="{{ route('logout') }}" method="post" style="display: inline;">
                         @csrf
-                        <button type="submit" class="nav-link btn btn-link" style="background: none; border: none; padding: 0; color: inherit; cursor: pointer;"
-                        ><i class="fa fa-arrow-left"></i>الخروج</button>
+                    <button type="submit" class="nav-link btn btn-link" style="background: none; border: none; padding: 0; color: inherit; cursor: pointer;"
+                    ><i class="fa fa-arrow-left"></i>الخروج</button>
 
                     </form></a>
-
                 </li>
 
 
@@ -90,6 +92,8 @@
                                         <th>تاريخ الإضافة</th>
                                         <th>الفئات</th>
                                         <th>الإجراءات</th>
+
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -145,7 +149,16 @@
                                                 </button>
                                             </form>
                                             @endrole
-
+                                            @auth
+                                                <form action="{{ route('blogs.manage_favorite', $blog->id) }}" method="POST" style="display: inline;">
+                                                    @csrf
+                                                    <button type="submit"
+                                                            class="btn btn-sm {{ $blog->is_favorited ? 'btn-secondary' : 'btn-success' }}"
+                                                            title="{{ $blog->is_favorited ? 'إزالة من المفضلة' : 'إضافة إلى المفضلة' }}">
+                                                        <i class="fa {{ $blog->is_favorited ? 'fa-heart' : 'fa-heart-o' }}"></i>
+                                                    </button>
+                                                </form>
+                                            @endauth
 
                                         </td>
                                     </tr>

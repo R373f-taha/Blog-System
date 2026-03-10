@@ -23,9 +23,8 @@ Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
 Route::group(['prefix'=>'blogs','as'=>'blogs.'],function () {
 Route::get('/show',[BlogController::class,'index'])->name('showAll');
 Route::get('/show/{blog}',[BlogController::class,'show'])->name('show');
-Route::post('blog/{id}/favorite',[BlogController::class,'addToFav'])->route('add_to_favorite');
-Route::delete('blog/{id}/favorite',[BlogController::class,'removeFromFav'])->route('remove_from_favorite');
-Route::get('blog/favorites',[BlogController::class,'favoritesBlog'])->route('favorite_blogs');
+Route::post('blog/{id}/favorite',[BlogController::class,'toggleFav'])->name('manage_favorite');
+Route::get('blog/favorites',[BlogController::class,'favoritesBlog'])->name('favorite_blogs');
 });
 
 Route::group(['prefix'=>'blogs','as'=>'blogs.'],function () {
