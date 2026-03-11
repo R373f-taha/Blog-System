@@ -92,6 +92,7 @@
                                         <th>تاريخ الإضافة</th>
                                         <th>الفئات</th>
                                         <th>الإجراءات</th>
+                                        <th>المفضلة</th>
 
 
                                     </tr>
@@ -149,6 +150,8 @@
                                                 </button>
                                             </form>
                                             @endrole
+                                        </td>
+                                        <td>
                                             @auth
                                                 <form action="{{ route('blogs.manage_favorite', $blog->id) }}" method="POST" style="display: inline;">
                                                     @csrf
@@ -159,8 +162,9 @@
                                                     </button>
                                                 </form>
                                             @endauth
-
                                         </td>
+
+
                                     </tr>
                                     @empty
                                     <tr>

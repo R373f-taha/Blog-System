@@ -17,7 +17,13 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs=Blog::all();
+        $blogs=Blog::with('categories')->get();
+
+        if(Auth()->check()){
+        $blogs->loadExists(['favoriteByUsers as is_favorited' => function($query){
+              $query->where('user_id',Auth()->user()->id);
+        }] );
+        }
         return view('Blog.index',compact('blogs'))->with('success','Blogs');
     }
 
@@ -26,9 +32,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-       $categories=Category::all();
+     //  $categories=Category::all();
 
-       return view('Blog.add',compact('categories'));
+       return view('Blog.add');
     }
 
     /**
@@ -107,7 +113,9 @@ class BlogController extends Controller
     }
 
     public function trash(){
+
         $blogs=Blog::onlyTrashed()->get();
+
         return view('Blog.recycleBin',compact('blogs'))->with('success','المدونات المؤرشفة');
 
     }
@@ -118,9 +126,12 @@ class BlogController extends Controller
     }
 
     public function restore($blog_id){
+
         $blog=Blog::onlyTrashed()->findOrFail($blog_id);
+
         $blog->restore();
-          return redirect()->route('blogs.showAll')->with('success','تمت استعادة المدونة');
+
+         return redirect()->route('blogs.showAll')->with('success','تمت استعادة المدونة');
 
 
     }

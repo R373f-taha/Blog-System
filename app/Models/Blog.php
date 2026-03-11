@@ -14,8 +14,8 @@ class Blog extends Model
     public  function categories(){
         return $this->belongsToMany(Category::class);
     }
-    public function favoriteByUser(){
+    public function favoriteByUsers(){
 
-        return $this->belongsToMany(User::class,'favorite_blogs','user_id','blog_id');
+        return $this->belongsToMany(User::class,'favorite_blogs','blog_id','user_id');
     }
 }
