@@ -1,17 +1,10 @@
-<!--
- * CoreUI - Open Source Bootstrap Admin Template
- * @version v1.0.0-alpha.2
- * @link http://coreui.io
- * Copyright (c) 2016 creativeLabs Łukasz Holeczek
- * @license MIT
- -->
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
 <head>
     <meta charset="utf-8">
 
-    <!-- <link rel="shortcut icon" href="assets/ico/favicon.png"> -->
+
     <title>Blog</title>
     <!-- Icons -->
     <link href="{{asset('dashboard/css/font-awesome.min.css')}} " rel="stylesheet">
@@ -19,15 +12,7 @@
     <!-- Main styles for this application -->
     <link href="{{asset('dashboard/dest/style.css')}} " rel="stylesheet">
 </head>
-<!-- BODY options, add following classes to body to change options
-		1. 'compact-nav'     	  - Switch sidebar to minified version (width 50px)
-		2. 'sidebar-nav'		  - Navigation on the left
-			2.1. 'sidebar-off-canvas'	- Off-Canvas
-				2.1.1 'sidebar-off-canvas-push'	- Off-Canvas which move content
-				2.1.2 'sidebar-off-canvas-with-shadow'	- Add shadow to body elements
-		3. 'fixed-nav'			  - Fixed navigation
-		4. 'navbar-fixed'		  - Fixed navbar
-	-->
+
 
 <body class="navbar-fixed sidebar-nav fixed-nav">
     <header class="navbar">
@@ -74,7 +59,7 @@
                 <div class="card">
                     <div class="card-header">
                         <i class="fa fa-plus"></i> إضافة مدونة جديدة
-                    
+
                     </div>
                     <div class="card-block">
 

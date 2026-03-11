@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class BlogController extends Controller
 {
@@ -24,7 +25,8 @@ class BlogController extends Controller
               $query->where('user_id',Auth()->user()->id);
         }] );
         }
-        return view('Blog.index',compact('blogs'))->with('success','Blogs');
+        return view('Blog.index',compact('blogs'),
+        ['blogs'=>DB::table('blogs')->paginate(4)])->with('success','Blogs');
     }
 
     /**
@@ -32,9 +34,9 @@ class BlogController extends Controller
      */
     public function create()
     {
-     //  $categories=Category::all();
+       $categories=Category::all();
 
-       return view('Blog.add');
+       return view('Blog.add',compact('categories'));
     }
 
     /**

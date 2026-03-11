@@ -1,10 +1,4 @@
-<!--
- * CoreUI - Open Source Bootstrap Admin Template
- * @version v1.0.0-alpha.2
- * @link http://coreui.io
- * Copyright (c) 2016 creativeLabs Łukasz Holeczek
- * @license MIT
- -->
+
 <!DOCTYPE html>
 <html lang="en" dir="rtl">
 
@@ -55,7 +49,7 @@
                     <a class="nav-link" href="{{ route('categories.create') }}"><i class="fa fa-list-alt"></i>إضافة فئة</a>
                     @endrole
                     <a class="nav-link" href="{{ route('blogs.showAll') }}"><i class="fa fa-book"></i>المدونات</a>
-                    <a class="nav-link" href="#"><i class="icon-user-following"></i> دسترسی کاربران</a>
+      
                 </li>
 
 

@@ -152,7 +152,7 @@
                                             @endrole
                                         </td>
                                         <td>
-                                            @auth
+                                         
                                                 <form action="{{ route('blogs.manage_favorite', $blog->id) }}" method="POST" style="display: inline;">
                                                     @csrf
                                                     <button type="submit"
@@ -161,7 +161,7 @@
                                                         <i class="fa {{ $blog->is_favorited ? 'fa-heart' : 'fa-heart-o' }}"></i>
                                                     </button>
                                                 </form>
-                                            @endauth
+
                                         </td>
 
 

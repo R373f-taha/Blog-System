@@ -25,7 +25,7 @@ class BlogStore extends FormRequest
             'title'=>'string|max:100|required|min:4',
             'content'=>'string|max:255|required|min:5',
             'image'=> 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'categories'=>'required|min:1|array',
+            'categories'=>'min:1|array',
             'categories.*'=>'exists:categories,id'
         ];
     }

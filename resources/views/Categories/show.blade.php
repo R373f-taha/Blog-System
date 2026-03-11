@@ -1,12 +1,6 @@
-<!--
- * CoreUI - Open Source Bootstrap Admin Template
- * @version v1.0.0-alpha.2
- * @link http://coreui.io
- * Copyright (c) 2016 creativeLabs Łukasz Holeczek
- * @license MIT
- -->
+
 <!DOCTYPE html>
-<html lang="IR-fa" dir="rtl">
+<html lang="en" dir="rtl">
 
 <head>
     <meta charset="utf-8">
@@ -19,15 +13,7 @@
     <!-- Main styles for this application -->
     <link href="{{asset('dashboard/dest/style.css')}} " rel="stylesheet">
 </head>
-<!-- BODY options, add following classes to body to change options
-		1. 'compact-nav'     	  - Switch sidebar to minified version (width 50px)
-		2. 'sidebar-nav'		  - Navigation on the left
-			2.1. 'sidebar-off-canvas'	- Off-Canvas
-				2.1.1 'sidebar-off-canvas-push'	- Off-Canvas which move content
-				2.1.2 'sidebar-off-canvas-with-shadow'	- Add shadow to body elements
-		3. 'fixed-nav'			  - Fixed navigation
-		4. 'navbar-fixed'		  - Fixed navbar
-	-->
+
 
 <body class="navbar-fixed sidebar-nav fixed-nav">
     <header class="navbar">
@@ -36,15 +22,7 @@
              <a href="{{ route('categories.showAll') }}" class="btn btn-sm btn-primary" title="عودة">
                              <i class="fa fa-arrow-right" style="font-size: 1.8rem;"></i></a>
 
-                <!--<li class="nav-item p-x-1">
-                    <a class="nav-link" href="#">داشبورد</a>
-                </li>
-                <li class="nav-item p-x-1">
-                    <a class="nav-link" href="#">Users</a>
-                </li>
-                <li class="nav-item p-x-1">
-                    <a class="nav-link" href="#">Settings</a>
-                </li>-->
+            
             </ul>
             <ul class="nav navbar-nav pull-left hidden-md-down">
 
@@ -88,7 +66,7 @@
                                         <th>#</th>
                                         <th>الاسم</th>
                                         <th>تاريخ الإضافة</th>
-                         
+
                                     </tr>
                                 </thead>
                                 <tbody>
