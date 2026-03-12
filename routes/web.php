@@ -47,7 +47,7 @@ Route::post('/store',[CategoryController::class,'store'])->name('store');
 Route::get('/edit/{category}',[CategoryController::class,'edit'])->name('edit');
 Route::put('/update/{category}',[CategoryController::class,'update'])->name('update');
 Route::delete('/delete/{category}',[CategoryController::class,'destroy'])->name('delete');
-//Route::get('/categories/{blog_id}',[CategoryController::class,'categories'])->name('categories');
+
 
 });
 

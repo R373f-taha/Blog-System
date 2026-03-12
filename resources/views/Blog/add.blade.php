@@ -18,17 +18,6 @@
     <header class="navbar">
         <div class="container-fluid">
 
-
-
-                <!--<li class="nav-item p-x-1">
-                    <a class="nav-link" href="#">داشبورد</a>
-                </li>
-                <li class="nav-item p-x-1">
-                    <a class="nav-link" href="#">Users</a>
-                </li>
-                <li class="nav-item p-x-1">
-                    <a class="nav-link" href="#">Settings</a>
-                </li>-->
             </ul>
             <ul class="nav navbar-nav pull-left hidden-md-down">
 

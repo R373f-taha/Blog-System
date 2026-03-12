@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -111,6 +112,7 @@ class BlogController extends Controller
     public function softDelete(Blog $blog)
     {
        $blog->delete();//soft delete
+
        return redirect()->route('blogs.showAll')->with('success','تمت أرشفة المدونة');
     }
 
@@ -122,8 +124,16 @@ class BlogController extends Controller
 
     }
     public function forceDelete($blog_id){
+
         $blog=Blog::withTrashed()->findOrFail($blog_id);
+
         $blog->forceDelete();
+
+        if($blog->image && Storage::disk('public')->exists($blog->image)){
+            
+           Storage::disk('public')->delete($blog->image);
+        }
+
         return redirect()->route('blogs.showAll')->with('success','تمت حذف المدونة');
     }
 
